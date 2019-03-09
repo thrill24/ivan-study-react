@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>my study</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+	<div id="root">
+		
+	</div>
+	<script src="react/react.min.js"></script>
+	<script src="react/react-dom.min.js"></script>
+	<script src="react/browser.min.js"></script>
+	<script type="text/babel">
+		function Welcome(props){
+			return (
+				<div className="ivan">
+				   {'welcome '+props.name}
+				</div>
+			)
+		}
+		function Item(){
+			return (
+			 <div>	
+				<span>you are best!!</span>
+				<a href="http://www.baidu.com">点我跳转</a>
+		     </div>		
+			)
+		}
+		function List(props){
+			const list=props.source;
+			const res=list.map((item)=>{
+				return <li key={item.toString()}>{item}</li>
+			});
+			return (<ul className="wrap">{res}</ul>);
+		}
+		
+		//类的方式构造组件
+		class Clock extends React.Component{
+			constructor(props){
+				super(props);
+				this.state={
+					date:new Date()
+				}
+			}
+			tick(){
+				this.setState({
+					date:new Date()
+				});
+			}
+			componentDidMount(){
+				this.timerId=setInterval(()=>this.tick(),1000);
+			}
+			componentWillUnmount(){
+				clearInterval(this.timerId);
+			}
+			render(){
+				return (
+					<div>
+					 <Welcome name="ivan"/>
+					{this.state.date.toLocaleString()}
+					</div>
+				)
+			}
+		}
+		
+		const data=[1,2,3,4,5];
+		ReactDOM.render(<Clock />,document.getElementById('root'))
+	</script>
+</body>
+</html>

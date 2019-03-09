@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+#root {
+  width: 200px;
+  height: 200px;
+  border: 1px solid blue;
+  color: red;
+  text-align: center;
+}
+#root .ivan {
+  color: blue;
+}
+#root .wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*# sourceMappingURL=style.css.map */
